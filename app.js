@@ -15,8 +15,15 @@ $(document).ready(function() {
 
   // define getRequest function that takes requests data from omdb server
   function getRequest(searchItem) {
-
-    $.getJSON('http://www.omdbapi.com/?s=' + searchItem + '&r=json', function(data){
+    // define search and data type parameters
+    var params = {
+      s: searchItem,
+      r: 'json'
+    };
+    // define url of the server website
+    url = 'http://www.omdbapi.com';
+    // request to get results as JSON from server
+    $.getJSON(url, params, function(data){
       showResults(data.Search);
     });
   }
